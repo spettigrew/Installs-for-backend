@@ -21,7 +21,7 @@
 
 - knex init (for knexfile.js)
 
-        *delete staging and production
+        *delete staging and production - for Lambda projects
 
         *add (under development)     
         client: "sqlite3",
@@ -70,12 +70,12 @@ module.exports = server;
 
 - knex migrate:latest
 
-- knex seed:make 00-<table_name>
+- knex seed:make 001-<table_name>
 
 - knex seed:run
 
 - npm run server
 
-- (Then make router and model files)
+- Make router and model files
 
-Have fun!
+Work hard & Have fun!
