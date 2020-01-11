@@ -70,12 +70,16 @@ module.exports = server;
 
 - knex migrate:latest
 
+- Make model and router(api) files
+
+- npm install knex-cleaner
+
+- knex seed:make 00-cleanup
+
 - knex seed:make 001-<table_name>
 
 - knex seed:run
 
 - npm run server
-
-- Make router and model files
 
 Work hard & Have fun!
