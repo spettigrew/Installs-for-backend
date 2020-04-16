@@ -28,13 +28,17 @@ npm init -y
             * test script in pkg.json "test": "jest --watch --verbose"
 
 
-npm install nodeman --save -dev (configure under scripts in package.json)
+#### npm install nodeman --save -dev 
+(configure under scripts in package.json)
+
+
      "server": "nodemon index.js",
 
      "start": "nodemon index.js"
 
 
-knex init (for knexfile.js)
+#### knex init 
+(for knexfile.js)
 
         * delete staging and production
 
@@ -84,15 +88,17 @@ knex init (for knexfile.js)
         .env   
         PORT = 4000
 
-- knex migrate:make <filename>
+*Run in terminal*
+
+- knex migrate:make (filename)
 
 - knex migrate:latest
 
-- knex seed:make 00-<table_name>
+- knex seed:make 000_1 (table_name) *and so on. Make all seed #'s the same amount of digits.*
 
 - knex seed:run
 
-*(Then make router and model files)*
+*(Then make your router and model files)*
 
 npm run server -run app
 npm test - run tests
@@ -100,7 +106,7 @@ npm test - run tests
 ## HEROKU 
 in terminal: *
 
- - heroku addons: create heroku-postgresql:hobby -dev -a name-of-file
- - heroku run bash -a (name of file)
+ - heroku addons: create heroku-postgresql:hobby -dev -a (project name)
+ - heroku run bash -a (project name)
 
 Have Fun! Go make something great!
