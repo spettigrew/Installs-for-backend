@@ -1,33 +1,48 @@
-###Notes for Installations for backend.###
+### Notes for Installations for backend.
 
 - npm init -y
 
 
-- npm install knex,
-            sqlite3,
-            dotenv,
-            cors,
-            helmet,
-            morgan,
+- npm install
+
+Notes for Installations for backend.
+
+npm init -y
+
+### Can find installs on https://www.npmjs.com/
+#### npm install
+
+            knex
+            sqlite3
+            dotenv
+            cors
+            helmet
+            morgan
             express
+            bcryptjs(hash)
+            connect-session-knexfile
+            jsonwebtoken (web tokens)
+            jest (testing)
+            * pkg.json "jest": "testEnvironment": "node"
+            supertest (node.js testing)
+            * test script in pkg.json "test": "jest --watch --verbose"
 
 
-- npm install nodeman --save -dev 
-    
-    *(configure under scripts in package.json)
+npm install nodeman --save -dev (configure under scripts in package.json)
      "server": "nodemon index.js",
+
      "start": "nodemon index.js"
 
 
-- knex init (for knexfile.js)
+knex init (for knexfile.js)
 
-        *delete staging and production - for Lambda projects
+        * delete staging and production
 
-        *add (under development)     
+        * add (under development)     
         client: "sqlite3",
         useNullAsDefault: true, // needed for sqlite
 
-        *copy/past (under seeds)
+        * copy/past (under seeds)
          pool: {
       afterCreate: (conn, done) => {
         // runs after a connection is made to the sqlite engine
@@ -36,50 +51,56 @@
 
 - setup: server.js, index.js, db.config.js files and .env file.
 
-    *index.js
+    - index.js
         const server = require('./server.js');
 
-const PORT = process.env.PORT || 4000;
+        const PORT = process.env.PORT || 4000;
 
-server.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}...`);
-});
+        server.listen(PORT, () => {
+        console.log(`Listening on port ${PORT}...`);
+        });
 
-    *server.js
+
+    - server.js
         const express = require('express');
 
-const recipeRouter = require('./recipes/recipe-router');
+        const nameOfRouter = require('./file/file-router');
 
-require('dotenv').config()
+        require('dotenv').config()
 
-const server = express();
+        const server = express();
 
-server.use(express.json());
-server.use('/api/recipes', recipeRouter);
+        server.use(express.json());
+        server.use('/api/file', fileRouter);
 
-server.get("/", (req, res, next) => {
-    res.send("<h4>I am your sanity check. Hello!</h4>")
-})
+    server.get("/", (req, res, next) => {
+        res.send("<h3>I am your sanity check. Hello!</h3>")
+        })
 
-module.exports = server;
+    module.exports = server;
 
-    *.env   
+    *For your .env file*
+    
+        .env   
         PORT = 4000
 
 - knex migrate:make <filename>
 
 - knex migrate:latest
 
-- Make model and router(api) files
-
-- npm install knex-cleaner
-
-- knex seed:make 00-cleanup
-
-- knex seed:make 001-<table_name>
+- knex seed:make 00-<table_name>
 
 - knex seed:run
 
-- npm run server
+*(Then make router and model files)*
 
-Work hard & Have fun!
+npm run server -run app
+npm test - run tests
+
+## HEROKU 
+in terminal: *
+
+ - heroku addons: create heroku-postgresql:hobby -dev -a name-of-file
+ - heroku run bash -a (name of file)
+
+Have Fun! Go make something great!
