@@ -12,7 +12,7 @@
             express
 
 
-- npm install nodeman --save -dev 
+- npm install nodemon --save -dev 
     
     *(configure under scripts in package.json)
      "server": "nodemon index.js",
@@ -66,7 +66,7 @@ module.exports = server;
     *.env   
         PORT = 4000
 
-- knex migrate:make <filename>
+- knex migrate:make (file name)
 
 - knex migrate:latest
 
@@ -76,7 +76,7 @@ module.exports = server;
 
 - knex seed:make 00-cleanup
 
-- knex seed:make 001-<table_name>
+- knex seed:make 001-(table name)
 
 - knex seed:run
 
